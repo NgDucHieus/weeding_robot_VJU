@@ -5,4 +5,4 @@
 #Set up yolo trên jetson nano 
 Documentation
 Trước tiên  download yolov7 thông qua lệnh git clone 
-'''https://github.com/WongKinYiu/yolov7.git'''
+''' git clone https://github.com/WongKinYiu/yolov7.git'''
