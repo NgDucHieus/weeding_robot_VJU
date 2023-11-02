@@ -3,7 +3,7 @@ Bùi Huy Kiên, Đặng Minh Hiếu, Nguyễn Đức Hiếu
 Vietnam National University - Vietnam Japan University
 
 ## Thiết kế và lập trình nhúng trên nền tảng Jetson Nano
-### 3.1 Cấu hình sử dụng trên GPU với Nvidia Tensor RT
+### 1.1 Cấu hình sử dụng trên GPU với Nvidia Tensor RT
 
 TensorRT là một thư viện được phát triển bởi NVIDIA nhằm cải thiện tốc độ suy diễn ảnh, giảm độ trì truệ trên các thiết bị đồ họa NVIDIA (GPU). Nó có thể cải thiện tốc độ suy luận lên đến 2-4 lần so với các dịch vụ thời gian thực (real-time) và nhanh hơn gấp 30 lần so với hiệu suất của CPU. Về nguyên lý, TensorRT được sử dụng để triển khai các thư viện phục vụ cho học máy, học sâu cần đến xử lý đồ họa trên các phần cứng nhúng như mô tả trong Hình 6.
 
