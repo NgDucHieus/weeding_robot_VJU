@@ -1,6 +1,5 @@
 
 
-![image](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/01c0779b-11cd-4fec-860a-ee61b4c7fde4)
 # Robot diệt cỏ bằng laser sử dụng YOLOv7
 Bùi Huy Kiên, Đặng Minh Hiếu, Nguyễn Đức Hiếu
 Vietnam National University - Vietnam Japan University
