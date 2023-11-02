@@ -4,4 +4,5 @@
 # weeding_robot_VJU
 #Set up yolo trên jetson nano 
 Documentation
-Trước tiên hay download yolov7 thông qua lệnh git clone 
+Trước tiên  download yolov7 thông qua lệnh git clone 
+'''https://github.com/WongKinYiu/yolov7.git'''
