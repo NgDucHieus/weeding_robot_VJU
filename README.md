@@ -75,5 +75,5 @@ Sơ đồ nguyên lý tích hợp thị giác máy tính và điều khiển đ�
 
 ![image](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/238d0fab-9a68-4921-8264-57596c65db17)
 
-Về cơ bản thì khi bản clone project của chúng tôi đã được cài sẵn yolov7 nếu bản muốn biết thêm thông tin về yolov7 thì bạn có xem qua 
+Về cơ bản thì khi bạnbạn clone project của chúng tôi đã được cài sẵn yolov7 nếu bản muốn biết thêm thông tin về yolov7 thì bạn có xem qua 
 source code của [Yolov7](https://github.com/WongKinYiu/yolov7)
