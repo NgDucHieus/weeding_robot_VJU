@@ -34,24 +34,46 @@ git clone https://github.com/hieucoolngau/weeding_robot_VJU.git
 ```
 Tạo 1 file python mới trong folder weeding_robot_VJU sai đó import các class sau
 ```bash
+import Jetson.GPIO as GPIO
+import time
+from step_motor import  StepMotor13, StepMotor2
+from dc_motor import Dc_Motor
+from laser import Laser
+```
+Tạo object:
+```bash
+stepMotor13 =  StepMotor13() #điều khiển hai step motor theo trục Y
+stepMotor2 = StepMotor2() #điều khiên step motor cho phép dịch chuyển laser đến vị trí chọn
+laser = laser() #tạo object laser
+```
+Sau khi khởi tạo đối tượng các bạn có thể gọi các phương thức như sau
+```bash
+stepMotor13.move(GPIO.LOW,GPIO.HIGH,200) #thuộc tính đầu tiên mặc định là LOW, thuộc tính thứ là HIGH đại diện cho direction bạn có thể đổi chiều quay bằng cách chuyển HIGH thành LOW,
+                                    #thuộc tính cuối cùng là số vòng lặp,vòng lặp càng lớn thì step motor quay cảng lâu
+#tương tự với step_Motor2
+stepMotor2.move(GPIO.LOW,GPIO.HIGH,200)
+#với laser
+laser.ON() #tức là bật laser
+laser.OFF()#tức là tắt laser
+laser.CHECK()#lúc này laser sẽ chớp tắt liên tục, bạn có thể điều chỉnh thời gian chớp tắt của laser
+```
+
 
 ### Cấu hình sử dụng trên GPU với Nvidia Tensor RT
 [TensorRT](https://developer.nvidia.com/tensorrt) là một thư viện được phát triển bởi NVIDIA nhằm cải thiện tốc độ suy diễn ảnh, giảm độ trì truệ trên các thiết bị đồ ahọa NVIDIA (GPU). Nó có thể cải thiện tốc độ suy luận lên đến 2-4 lần so với các dịch vụ thời gian thực (real-time) và nhanh hơn gấp 30 lần so với hiệu suất của CPU. Về nguyên lý, TensorRT được sử dụng để triển khai các thư viện phục vụ cho học máy, học sâu cần đến xử lý đồ họa trên các phần cứng nhúng như mô tả trong hình dưới.
 
 **Chuyển đổi từ các thư viện sang inference engine với TensorRT.**
+
 ![Chuyển đổi từ các thư viện sang inference engine với TensorRT](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/01c0779b-11cd-4fec-860a-ee61b4c7fde4)
 
 
-
-
 Để sử dụng YOLO trên GPU của Jetson Nano, chúng tôi thực hiện quá trình tổng hợp “YOLO engine” cho mô hình đã được huấn luyện [15]. Quá trình này gồm các bước sau: tạo tệp trọng số WTS (Weight Tensor Serialization), cài đặt CMake và Make, tạo engine và kiểm thử. Kết quả của quá trình này là việc sử dụng được mô hình đã huấn luyện trên GPU của Jetson Nano, từ đó sử dụng mô hình để phát hiện các đối tượng cỏ hoặc cây.
-
+Các bạn có thể tham khảo kênh ![Rocker Systems](https://www.youtube.com/watch?v=n9BSrfqpVFA&t=177s) cho việc setup yolov7 trên jetson nano
 
 ### Tích hợp thị giác máy tính và lập trình điều khiển 
 Sơ đồ nguyên lý tích hợp thị giác máy tính và điều khiển động cơ cho robot diệt cỏ được minh họa trong . Về nguyên lý, thị giác máy tính được xử lý thông qua camera gắn trên robot và YOLOv8n trên Jetson nano. Kết quả trả về bao gồm có loại vật thể (cỏ hoặc cây), độ tin cậy, và tọa độ của các hộp bao quanh vật thể. Tọa độ gồm có 4 thông số x, y, w, h đại diện cho tọa độ tâm (x, y) của hộp, w là chiều rộng, và h là chiều cao. Tọa độ và loại vật thể sẽ được sử dụng là đầu vào cho việc điều khiển các cơ cấu chấp hành của robot bao gồm 4 động cơ DC để di chuyển, 3 động cơ bước để di chuyển đầu laser theo phương (X, Y), và bật tắt đầu laser. Các động cơ bước sẽ di chuyển từ vị trí ban đầu, đến từng vị trí cỏ dại, bật đầu laser để tiêu diệt cỏ, sau đó di chuyển đến vị trí kế tiếp cho đến khi cỏ dại không còn ghi nhận bởi camera thì kết thúc quá trình và di chuyển đến vị trí tiếp theo. 
 
 ![image](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/238d0fab-9a68-4921-8264-57596c65db17)
 
-
-```bash
-git clone https://github.com/WongKinYiu/yolov7.git
+Về cơ bản thì khi bản clone project của chúng tôi đã được cài sẵn yolov7 nếu bản muốn biết thêm thông tin về yolov7 thì bạn có xem qua 
+source code của [Yolov7](https://github.com/WongKinYiu/yolov7)
