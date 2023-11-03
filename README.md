@@ -28,10 +28,12 @@ Jetson GPIO là một giao diện GPIO (General Purpose Input/Output) được t
 Trong dự án này, thư viện GPIO của Jetson nano được sử dụng để điều khiển 4 động cơ một chiều cho di chuyển tiến lùi của robot, 3 động cơ bước cho điều khiển vị trí của đầu laser, và bật tắt laser với nguyên lý độ rộng xung PWM (Pulse Width Modulation).
 
 ## Điều khiển động cơ
-Đầu tiên hãy chắc chắn rằng bạn đã clone weedding_project thông qua lệnh git clone
+Đầu tiên hãy chắc chắn rằng bạn đã clone weedding_robot_VJU thông qua lệnh git clone
 ```bash
-git clone https://github.com/WongKinYiu/yolov7.git
+git clone https://github.com/hieucoolngau/weeding_robot_VJU.git
 ```
+Tạo 1 file python mới trong folder weeding_robot_VJU sai đó import các class sau
+```bash
 
 ### Cấu hình sử dụng trên GPU với Nvidia Tensor RT
 [TensorRT](https://developer.nvidia.com/tensorrt) là một thư viện được phát triển bởi NVIDIA nhằm cải thiện tốc độ suy diễn ảnh, giảm độ trì truệ trên các thiết bị đồ ahọa NVIDIA (GPU). Nó có thể cải thiện tốc độ suy luận lên đến 2-4 lần so với các dịch vụ thời gian thực (real-time) và nhanh hơn gấp 30 lần so với hiệu suất của CPU. Về nguyên lý, TensorRT được sử dụng để triển khai các thư viện phục vụ cho học máy, học sâu cần đến xử lý đồ họa trên các phần cứng nhúng như mô tả trong hình dưới.
