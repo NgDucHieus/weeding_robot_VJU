@@ -4,7 +4,7 @@
 Bùi Huy Kiên, Đặng Minh Hiếu, Nguyễn Đức Hiếu
 Vietnam National University - Vietnam Japan University
 
-##Phần cứng
+## Phần cứng
 ## Chúng tôi sử dụng Jetson Nano cho việc xử lý
 Chúng tôi đã chọn Jetson Nano để xử lý vì các lợi ích của nó trong việc thực hiện tác vụ xử lý hình ảnh và học máy. Jetson Nano cung cấp hiệu suất đủ mạnh để thực hiện các nhiệm vụ phức tạp như nhận diện đối tượng trong thời gian thực và có khả năng tích hợp cùng với TensorRT để tối ưu hóa hiệu suất trên GPU.
 
