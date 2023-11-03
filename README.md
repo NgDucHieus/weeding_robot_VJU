@@ -6,7 +6,10 @@ Vietnam National University - Vietnam Japan University
 
 ## Phần cứng
 ## Jetson Nano 
-Chúng tôi đã chọn Jetson Nano để xử lý vì các lợi ích của nó trong việc thực hiện tác vụ xử lý hình ảnh và học máy. Jetson Nano cung cấp hiệu suất đủ mạnh để thực hiện các nhiệm vụ phức tạp như nhận diện đối tượng trong thời gian thực và có khả năng tích hợp cùng với TensorRT để tối ưu hóa hiệu suất trên GPU.
+Chúng tôi đã chọn Jetson Nano vì các lợi ích của nó trong việc thực hiện tác vụ xử lý hình ảnh và học máy. Jetson Nano cung cấp hiệu suất đủ mạnh để thực hiện các nhiệm vụ phức tạp như nhận diện đối tượng trong thời gian thực và có khả năng tích hợp cùng với TensorRT để tối ưu hóa hiệu suất trên GPU.
+![Jetson Nano](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/cb74fe7e-9f46-47e6-b75f-34ba33065e3e)
+
+
 
 ## Thiết kế và lập trình nhúng trên nền tảng Jetson Nano
 ### 1.1 Cấu hình sử dụng trên GPU với Nvidia Tensor RT
