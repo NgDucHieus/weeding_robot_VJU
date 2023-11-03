@@ -13,8 +13,7 @@ Chúng tôi đã chọn Jetson Nano vì các lợi ích của nó trong việc t
 ## Thiết kế và lập trình nhúng trên nền tảng Jetson Nano
 ### Điều khiển tín hiệu vào ra với Jetson GPIO
 Jetson GPIO là một giao diện GPIO (General Purpose Input/Output) được tích hợp sẵn trong dòng sản phẩm NVIDIA Jetson, chủ yếu dùng cho việc tương tác với các thiết bị ngoại vi hoặc cảm biến thông qua các chân GPIO trên mạch. Jetson GPIO cung cấp khả năng điều khiển và đọc tín hiệu từ các chân GPIO này, cho phép các ứng dụng và dự án sử dụng Jetson tận dụng các tính năng và kết nối phần cứng đa dạng.
-[TensorRT](https://developer.nvidia.com/tensorrt) là một thư viện được phát triển bởi NVIDIA nhằm cải thiện tốc độ suy diễn ảnh, giảm độ trì truệ trên các thiết bị đồ họa NVIDIA (GPU). Nó có thể cải thiện tốc độ suy luận lên đến 2-4 lần so với các dịch vụ thời gian thực (real-time) và nhanh hơn gấp 30 lần so với hiệu suất của CPU. Về nguyên lý, TensorRT được sử dụng để triển khai các thư viện phục vụ cho học máy, học sâu cần đến xử lý đồ họa trên các phần cứng nhúng như mô tả trong Hình 6.
-### Cấu hình sử dụng trên GPU với Nvidia Tensor RT
+[TensorRT](https://developer.nvidia.com/tensorrt)
 
 TensorRT là một thư viện được phát triển bởi NVIDIA nhằm cải thiện tốc độ suy diễn ảnh, giảm độ trì truệ trên các thiết bị đồ ahọa NVIDIA (GPU). Nó có thể cải thiện tốc độ suy luận lên đến 2-4 lần so với các dịch vụ thời gian thực (real-time) và nhanh hơn gấp 30 lần so với hiệu suất của CPU. Về nguyên lý, TensorRT được sử dụng để triển khai các thư viện phục vụ cho học máy, học sâu cần đến xử lý đồ họa trên các phần cứng nhúng như mô tả trong Hình 6.
 
