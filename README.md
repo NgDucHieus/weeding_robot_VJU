@@ -5,6 +5,10 @@ Bùi Huy Kiên, Đặng Minh Hiếu, Nguyễn Đức Hiếu
 Vietnam National University - Vietnam Japan University
 
 ## Phần cứng
+## Thiết kế cơ khí robot
+![image](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/b06b9b51-81ca-4d7b-93e1-a3907dbaaed6)
+![image](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/387167cd-3ce1-4838-8fcb-3947122b7848)
+
 ## Jetson Nano 
 Chúng tôi đã chọn Jetson Nano vì các lợi ích của nó trong việc thực hiện tác vụ xử lý hình ảnh và học máy. Jetson Nano cung cấp hiệu suất đủ mạnh để thực hiện các nhiệm vụ phức tạp như nhận diện đối tượng trong thời gian thực và có khả năng tích hợp cùng với TensorRT để tối ưu hóa hiệu suất trên GPU.
 
