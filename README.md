@@ -17,6 +17,7 @@ Jetson GPIO là một giao diện GPIO (General Purpose Input/Output) được t
 
 ![Cổng IN/OUT với thư viện GPIO cho Jetson nano](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/0c86d889-10a6-411b-939b-e5e7563db116)
 
+**Cổng IN/OUT với thư viện GPIO cho Jetson nano**
 
 ### Cấu hình sử dụng trên GPU với Nvidia Tensor RT
 [TensorRT](https://developer.nvidia.com/tensorrt) là một thư viện được phát triển bởi NVIDIA nhằm cải thiện tốc độ suy diễn ảnh, giảm độ trì truệ trên các thiết bị đồ ahọa NVIDIA (GPU). Nó có thể cải thiện tốc độ suy luận lên đến 2-4 lần so với các dịch vụ thời gian thực (real-time) và nhanh hơn gấp 30 lần so với hiệu suất của CPU. Về nguyên lý, TensorRT được sử dụng để triển khai các thư viện phục vụ cho học máy, học sâu cần đến xử lý đồ họa trên các phần cứng nhúng như mô tả trong Hình 6.
@@ -24,7 +25,7 @@ Jetson GPIO là một giao diện GPIO (General Purpose Input/Output) được t
 ![Chuyển đổi từ các thư viện sang inference engine với TensorRT](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/01c0779b-11cd-4fec-860a-ee61b4c7fde4)
 
 
-**Hình 6. Chuyển đổi từ các thư viện sang inference engine với TensorRT [14].**
+**Chuyển đổi từ các thư viện sang inference engine với TensorRT.**
 
 Để sử dụng YOLO trên GPU của Jetson Nano, chúng tôi thực hiện quá trình tổng hợp “YOLO engine” cho mô hình đã được huấn luyện [15]. Quá trình này gồm các bước sau: tạo tệp trọng số WTS (Weight Tensor Serialization), cài đặt CMake và Make, tạo engine và kiểm thử. Kết quả của quá trình này là việc sử dụng được mô hình đã huấn luyện trên GPU của Jetson Nano, từ đó sử dụng mô hình để phát hiện các đối tượng cỏ hoặc cây.
 
