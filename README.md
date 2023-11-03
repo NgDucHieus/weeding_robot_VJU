@@ -11,7 +11,7 @@ Chúng tôi đã chọn Jetson Nano vì các lợi ích của nó trong việc t
 ![Jetson Nano](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/cb74fe7e-9f46-47e6-b75f-34ba33065e3e)
 
 ## Thiết kế và lập trình nhúng trên nền tảng Jetson Nano
-### 1.1 Cấu hình sử dụng trên GPU với Nvidia Tensor RT
+### Cấu hình sử dụng trên GPU với Nvidia Tensor RT
 
 TensorRT là một thư viện được phát triển bởi NVIDIA nhằm cải thiện tốc độ suy diễn ảnh, giảm độ trì truệ trên các thiết bị đồ ahọa NVIDIA (GPU). Nó có thể cải thiện tốc độ suy luận lên đến 2-4 lần so với các dịch vụ thời gian thực (real-time) và nhanh hơn gấp 30 lần so với hiệu suất của CPU. Về nguyên lý, TensorRT được sử dụng để triển khai các thư viện phục vụ cho học máy, học sâu cần đến xử lý đồ họa trên các phần cứng nhúng như mô tả trong Hình 6.
 
