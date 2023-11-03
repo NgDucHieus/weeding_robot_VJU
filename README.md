@@ -13,9 +13,10 @@ Chúng tôi đã chọn Jetson Nano vì các lợi ích của nó trong việc t
 ## Thiết kế và lập trình nhúng trên nền tảng Jetson Nano
 ### Điều khiển tín hiệu vào ra với Jetson GPIO
 Jetson GPIO là một giao diện GPIO (General Purpose Input/Output) được tích hợp sẵn trong dòng sản phẩm NVIDIA Jetson, chủ yếu dùng cho việc tương tác với các thiết bị ngoại vi hoặc cảm biến thông qua các chân GPIO trên mạch. Jetson GPIO cung cấp khả năng điều khiển và đọc tín hiệu từ các chân GPIO này, cho phép các ứng dụng và dự án sử dụng Jetson tận dụng các tính năng và kết nối phần cứng đa dạng.
-Ở đây chúng tui sử dụng thư viện [Jetson.GPIO](https://github.com/NVIDIA/jetson-gpio) cho việc điều khiển tín hiệu In/Out. \
+Ở đây chúng tui sử dụng thư viện [Jetson.GPIO](https://github.com/NVIDIA/jetson-gpio) cho việc điều khiển tín hiệu In/Out. 
 
 **Cổng IN/OUT với thư viện GPIO cho Jetson nano**
+
 ![Cổng IN/OUT với thư viện GPIO cho Jetson nano](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/0c86d889-10a6-411b-939b-e5e7563db116)
 
 
