@@ -1,7 +1,7 @@
 
 
-# Robot diệt cỏ bằng laser sử dụng YOLOv7
-Bùi Huy Kiên, Đặng Minh Hiếu, Nguyễn Đức Hiếu
+# Wedding Robot using laser
+Bui Huy Kien, Dang Minh Hieu, Nguyen Duc Hieu
 Vietnam National University - Vietnam Japan University
 
 ## Phần cứng
