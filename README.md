@@ -1,6 +1,6 @@
 
 
-# Wedding Robot using laser
+# Wedding Robot using laser and YOLOv7
 Bui Huy Kien, Dang Minh Hieu, Nguyen Duc Hieu
 Vietnam National University - Vietnam Japan University
 
