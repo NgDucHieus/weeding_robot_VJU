@@ -19,7 +19,7 @@ We chose Jetson Nano for its benefits in image processing and machine learning t
 ## Designing and Programming on the Jetson Nano Platform
 ### Controlling Input and Output Signals with Jetson GPIO
 Jetson GPIO is a GPIO (General Purpose Input/Output) interface integrated into the NVIDIA Jetson product line, primarily used for interacting with peripheral devices or sensors through GPIO pins on the board. Jetson GPIO provides the capability to control and read signals from these GPIO pins, allowing applications and projects utilizing Jetson to leverage a variety of hardware features and connections.
-We use the [Jetson.GPIO](https://github.com/NVIDIA/jetson-gpio) for controlling input and outut signals. 
+We use the [Jetson.GPIO](https://github.com/NVIDIA/jetson-gpio) for controlling input and output signals. 
 
 **Input/Output Ports with the GPIO Library for Jetson Nano**
 
@@ -42,20 +42,21 @@ from laser import Laser
 ```
 Create an object StepMotor13():
 ```bash
-stepMotor13 =  StepMotor13() #điều khiển hai step motor theo trục Y
-stepMotor2 = StepMotor2() #điều khiên step motor cho phép dịch chuyển laser đến vị trí chọn
-laser = laser() #tạo object laser
+stepMotor13 =  StepMotor13() 
+stepMotor2 = StepMotor2() 
+laser = laser() #create laser object
 ```
 After initializing the object, you can use the methods as follows.
 ```bash
-stepMotor13.move(GPIO.LOW,GPIO.HIGH,200) #thuộc tính đầu tiên mặc định là LOW, thuộc tính thứ là HIGH đại diện cho direction bạn có thể đổi chiều quay bằng cách chuyển HIGH thành LOW,
-                                    #thuộc tính cuối cùng là số vòng lặp,vòng lặp càng lớn thì step motor quay cảng lâu
-#tương tự với step_Motor2
+stepMotor13.move(GPIO.LOW,GPIO.HIGH,200) #The first attribute defaults to LOW, the second attribute to HIGH represents the direction. You can change the rotation direction by switching from HIGH                                          # to LOW.
+                                          #The last attribute is the number of loops; the larger the loop, the longer the stepper motor will rotate.
+                                   
+#step_Motor2
 stepMotor2.move(GPIO.LOW,GPIO.HIGH,200)
 #với laser
-laser.ON() #tức là bật laser
-laser.OFF()#tức là tắt laser
-laser.CHECK()#lúc này laser sẽ chớp tắt liên tục, bạn có thể điều chỉnh thời gian chớp tắt của laser
+laser.ON() #Turn on the laser
+laser.OFF()#Turn off the laser
+laser.CHECK()#When you call this function, the laser will continuously flash off; you can adjust the laser's off time
 ```
 
 
