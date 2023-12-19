@@ -4,35 +4,35 @@
 Bui Huy Kien, Dang Minh Hieu, Nguyen Duc Hieu
 Vietnam National University - Vietnam Japan University
 
-## Phần cứng
-## Thiết kế cơ khí robot
+## HardWare
+## Mechanical design
 ![image](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/b06b9b51-81ca-4d7b-93e1-a3907dbaaed6)
 ![image](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/387167cd-3ce1-4838-8fcb-3947122b7848)
 
-Khung robot được xây dựng bằng nhôm định hình với kích thước dài rộng cao là 440x500x500 mm như trong trên. Động cơ bước sử dụng bộ truyền đai cung cấp khả năng trượt theo hai phương X và Y của đầu laser. Động cơ một chiều có thể điều chỉnh tốc độ và chiều quay để định hướng di chuyển. Các phần đồ gá, mặt bích, được thiết kế và gia công trên máy CNC để đảm bảo độ chính xác các vị trí của các thành phần của robot. 
+The robot frame is crafted from profiled aluminum, measuring 440x500x500 mm as specified. Stepper motors are utilized with a belt transmission system, enabling smooth movement along both the X and Y axes for the laser head. The unidirectional motor is adjustable in speed and rotation direction to dictate the motion. Mounting components, including brackets and flanges, are intricately designed and precision-machined using CNC technology to ensure accurate positioning of the robot's elements.
 
 ## Jetson Nano 
-Chúng tôi đã chọn Jetson Nano vì các lợi ích của nó trong việc thực hiện tác vụ xử lý hình ảnh và học máy. Jetson Nano cung cấp hiệu suất đủ mạnh để thực hiện các nhiệm vụ phức tạp như nhận diện đối tượng trong thời gian thực và có khả năng tích hợp cùng với TensorRT để tối ưu hóa hiệu suất trên GPU.
+We chose Jetson Nano for its benefits in image processing and machine learning tasks. The Jetson Nano offers sufficient power to handle complex tasks such as real-time object detection, and it comes with the capability to integrate seamlessly with TensorRT for optimizing performance on the GPU.
 
 ![Jetson Nano](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/cb74fe7e-9f46-47e6-b75f-34ba33065e3e)
 
-## Thiết kế và lập trình nhúng trên nền tảng Jetson Nano
-### Điều khiển tín hiệu vào ra với Jetson GPIO
-Jetson GPIO là một giao diện GPIO (General Purpose Input/Output) được tích hợp sẵn trong dòng sản phẩm NVIDIA Jetson, chủ yếu dùng cho việc tương tác với các thiết bị ngoại vi hoặc cảm biến thông qua các chân GPIO trên mạch. Jetson GPIO cung cấp khả năng điều khiển và đọc tín hiệu từ các chân GPIO này, cho phép các ứng dụng và dự án sử dụng Jetson tận dụng các tính năng và kết nối phần cứng đa dạng.
-Ở đây chúng tui sử dụng thư viện [Jetson.GPIO](https://github.com/NVIDIA/jetson-gpio) cho việc điều khiển tín hiệu In/Out. 
+## Designing and Programming on the Jetson Nano Platform
+### Controlling Input and Output Signals with Jetson GPIO
+Jetson GPIO is a GPIO (General Purpose Input/Output) interface integrated into the NVIDIA Jetson product line, primarily used for interacting with peripheral devices or sensors through GPIO pins on the board. Jetson GPIO provides the capability to control and read signals from these GPIO pins, allowing applications and projects utilizing Jetson to leverage a variety of hardware features and connections.
+We use the [Jetson.GPIO](https://github.com/NVIDIA/jetson-gpio) for controlling input and outut signals. 
 
-**Cổng IN/OUT với thư viện GPIO cho Jetson nano**
+**Input/Output Ports with the GPIO Library for Jetson Nano**
 
-![Cổng IN/OUT với thư viện GPIO cho Jetson nano](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/0c86d889-10a6-411b-939b-e5e7563db116)
+![Input/Output Ports with the GPIO Library for Jetson Nano](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/0c86d889-10a6-411b-939b-e5e7563db116)
 
-Trong dự án này, thư viện GPIO của Jetson nano được sử dụng để điều khiển 4 động cơ một chiều cho di chuyển tiến lùi của robot, 3 động cơ bước cho điều khiển vị trí của đầu laser, và bật tắt laser với nguyên lý độ rộng xung PWM (Pulse Width Modulation).
+In this project, the GPIO library is used to control 4 DC motors for the forward and backward movement of the robot, 3 stepper motors for controlling the position of the laser , and toggling the laser using the Pulse Width Modulation (PWM) principle for pulse width control.
 
-## Điều khiển động cơ
-Đầu tiên hãy chắc chắn rằng bạn đã clone weedding_robot_VJU thông qua lệnh git clone
+## Motor Control
+Make sure that you have cloned the weedding_robot_VJU repository using the git clone command.
 ```bash
 git clone https://github.com/hieucoolngau/weeding_robot_VJU.git
 ```
-Tạo 1 file python mới trong folder weeding_robot_VJU sai đó import các class sau
+Create a new Python file in the weeding_robot_VJU folder and then import the following classes.Tạo 1 file python mới trong folder weeding_robot_VJU sai đó import các class sau
 ```bash
 import Jetson.GPIO as GPIO
 import time
@@ -40,13 +40,13 @@ from step_motor import  StepMotor13, StepMotor2
 from dc_motor import Dc_Motor
 from laser import Laser
 ```
-Tạo object:
+Create an object StepMotor13():
 ```bash
 stepMotor13 =  StepMotor13() #điều khiển hai step motor theo trục Y
 stepMotor2 = StepMotor2() #điều khiên step motor cho phép dịch chuyển laser đến vị trí chọn
 laser = laser() #tạo object laser
 ```
-Sau khi khởi tạo đối tượng các bạn có thể gọi các phương thức như sau
+After initializing the object, you can use the methods as follows.
 ```bash
 stepMotor13.move(GPIO.LOW,GPIO.HIGH,200) #thuộc tính đầu tiên mặc định là LOW, thuộc tính thứ là HIGH đại diện cho direction bạn có thể đổi chiều quay bằng cách chuyển HIGH thành LOW,
                                     #thuộc tính cuối cùng là số vòng lặp,vòng lặp càng lớn thì step motor quay cảng lâu
@@ -59,8 +59,8 @@ laser.CHECK()#lúc này laser sẽ chớp tắt liên tục, bạn có thể đi
 ```
 
 
-### Cấu hình sử dụng trên GPU với Nvidia Tensor RT
-[TensorRT](https://developer.nvidia.com/tensorrt) là một thư viện được phát triển bởi NVIDIA nhằm cải thiện tốc độ suy diễn ảnh, giảm độ trì truệ trên các thiết bị đồ ahọa NVIDIA (GPU). Nó có thể cải thiện tốc độ suy luận lên đến 2-4 lần so với các dịch vụ thời gian thực (real-time) và nhanh hơn gấp 30 lần so với hiệu suất của CPU. Về nguyên lý, TensorRT được sử dụng để triển khai các thư viện phục vụ cho học máy, học sâu cần đến xử lý đồ họa trên các phần cứng nhúng như mô tả trong hình dưới.
+### Configure GPU with Nvidia TensorRT
+[TensorRT](https://developer.nvidia.com/tensorrt) is a library developed by NVIDIA to enhance the inference speed of deep learning models, reducing latency on NVIDIA graphics processing units (GPUs). It can improve inference speed by up to 2-4 times compared to real-time services and is over 30 times faster than CPU performance. In principle, TensorRT is used to deploy libraries that serve machine learning and deep learning, requiring graphics processing for embedded hardware, as illustrated in the diagram below.
 
 **Chuyển đổi từ các thư viện sang inference engine với TensorRT.**
 
