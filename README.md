@@ -62,18 +62,19 @@ laser.CHECK()#lúc này laser sẽ chớp tắt liên tục, bạn có thể đi
 ### Configure GPU with Nvidia TensorRT
 [TensorRT](https://developer.nvidia.com/tensorrt) is a library developed by NVIDIA to enhance the inference speed of deep learning models, reducing latency on NVIDIA graphics processing units (GPUs). It can improve inference speed by up to 2-4 times compared to real-time services and is over 30 times faster than CPU performance. In principle, TensorRT is used to deploy libraries that serve machine learning and deep learning, requiring graphics processing for embedded hardware, as illustrated in the diagram below.
 
-**Chuyển đổi từ các thư viện sang inference engine với TensorRT.**
+**Converting libraries to an inference engine with TensorRT**
 
-![Chuyển đổi từ các thư viện sang inference engine với TensorRT](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/01c0779b-11cd-4fec-860a-ee61b4c7fde4)
+![Converting libraries to an inference engine with TensorRT](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/01c0779b-11cd-4fec-860a-ee61b4c7fde4)
 
 
-Để sử dụng YOLO trên GPU của Jetson Nano, chúng tôi thực hiện quá trình tổng hợp “YOLO engine” cho mô hình đã được huấn luyện [15]. Quá trình này gồm các bước sau: tạo tệp trọng số WTS (Weight Tensor Serialization), cài đặt CMake và Make, tạo engine và kiểm thử. Kết quả của quá trình này là việc sử dụng được mô hình đã huấn luyện trên GPU của Jetson Nano, từ đó sử dụng mô hình để phát hiện các đối tượng cỏ hoặc cây.
-Các bạn có thể tham khảo kênh ![Rocker Systems](https://www.youtube.com/watch?v=n9BSrfqpVFA&t=177s) cho việc setup yolov7 trên jetson nano
+To use YOLO on the Jetson Nano GPU, we perform the synthesis process of the "YOLO engine" for the pre-trained model [15]. This process involves the following steps: creating a Weight Tensor Serialization (WTS) file, installing CMake and Make, building the engine, and testing. The result of this process is the ability to use the trained model on the Jetson Nano GPU, allowing the model to detect objects such as weeds or trees.
+You can refer to this channel ![Rocker Systems](https://www.youtube.com/watch?v=n9BSrfqpVFA&t=177s) for setup YOLOv7 on JETSON NANO
 
-### Tích hợp thị giác máy tính và lập trình điều khiển 
-Sơ đồ nguyên lý tích hợp thị giác máy tính và điều khiển động cơ cho robot diệt cỏ được minh họa trong . Về nguyên lý, thị giác máy tính được xử lý thông qua camera gắn trên robot và YOLOv8n trên Jetson nano. Kết quả trả về bao gồm có loại vật thể (cỏ hoặc cây), độ tin cậy, và tọa độ của các hộp bao quanh vật thể. Tọa độ gồm có 4 thông số x, y, w, h đại diện cho tọa độ tâm (x, y) của hộp, w là chiều rộng, và h là chiều cao. Tọa độ và loại vật thể sẽ được sử dụng là đầu vào cho việc điều khiển các cơ cấu chấp hành của robot bao gồm 4 động cơ DC để di chuyển, 3 động cơ bước để di chuyển đầu laser theo phương (X, Y), và bật tắt đầu laser. Các động cơ bước sẽ di chuyển từ vị trí ban đầu, đến từng vị trí cỏ dại, bật đầu laser để tiêu diệt cỏ, sau đó di chuyển đến vị trí kế tiếp cho đến khi cỏ dại không còn ghi nhận bởi camera thì kết thúc quá trình và di chuyển đến vị trí tiếp theo. 
+### Integrating computer vision and control programming
+The conceptual diagram for the integration of computer vision and motion control in a weed-killing robot is depicted as follows. In essence, computer vision is executed through a camera affixed to the robot and YOLOv8n on Jetson Nano. The outcomes include object categorization (weed or plant), confidence level, and the coordinates of bounding boxes around the detected objects. These coordinates consist of 4 parameters: x, y, w, h, representing the central coordinates (x, y) of the box, where w is the width, and h is the height.
+
+These coordinates, along with the object type, are utilized as inputs for managing the robot's actuators. This includes 4 DC motors for locomotion, 3 stepper motors for positioning the laser head in both the (X, Y) directions, and toggling the laser head on/off. The stepper motors will traverse from the initial position to each weed location, activate the laser head to eradicate the weed, and then move on to the subsequent position. This process repeats until no more weeds are detected by the camera, signaling the end of the operation, after which the robot proceeds to the next designated location.
 
 ![image](https://github.com/hieucoolngau/weeding_robot_VJU/assets/116575807/238d0fab-9a68-4921-8264-57596c65db17)
 
-Về cơ bản thì khi bạnbạn clone project của chúng tôi đã được cài sẵn yolov7 nếu bản muốn biết thêm thông tin về yolov7 thì bạn có xem qua 
-source code của [Yolov7](https://github.com/WongKinYiu/yolov7)
+Basically, when you clone our project, YOLOv7 is pre-installed. If you want to learn more about YOLOv7, you can review the source code [Yolov7](https://github.com/WongKinYiu/yolov7)
